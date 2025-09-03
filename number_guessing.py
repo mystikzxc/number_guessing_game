@@ -4,20 +4,18 @@ import random
 def play_game(guess_limit):
 
     # Range for random number
-    low_num = 1
-    high_num = 100
+    LOW_NUM = 1
+    HIGH_NUM = 100
 
     # Generate a random number between low_num and high_num
-    random_number = random.randint(low_num, high_num)
-
-    # print("Random Number: " + str(random_number)) # Print the generated random number
+    random_number = random.randint(LOW_NUM, HIGH_NUM)
 
     guess = ""
     attempts = 0
     out_of_guesses = False
 
     while guess != random_number and not(out_of_guesses):
-        guess = int(input("Enter Guess: "))
+        guess = int(input(f"Enter Guess ({LOW_NUM}-{HIGH_NUM}): "))
         attempts += 1
 
         if attempts < guess_limit:
@@ -33,13 +31,27 @@ def play_game(guess_limit):
     else:
         print("You WON! It took you " + str(attempts) + " attempts")
 
-# Choose difficulty
-print("__Difficulty__\n(1) Easy (10 attempts)\n(2) Hard (5 attempts)\n")
-difficulty = input("Choose difficulty: ")
+# Function to choose difficulty
+def choose_difficulty():
+        
+    print("__Difficulty__\n(1) Easy (10 attempts)\n(2) Hard (5 attempts)\n")
+    difficulty = input("Choose difficulty: ")
 
-if difficulty == "1":
-    play_game(10)
-elif difficulty == "2":
-    play_game(5)
-else:
-    print("Incorrect input")
+    if difficulty == "1":
+        play_game(10)
+    elif difficulty == "2":
+        play_game(5)
+    else:
+        print("Incorrect input")
+
+def main():
+    while True:
+        choose_difficulty()
+
+        replay = input("Would you like to play again? (y/n)")
+        if replay != "y":
+            print("Thanks for playing!")
+            break
+
+if __name__ == "__main__":
+    main()
