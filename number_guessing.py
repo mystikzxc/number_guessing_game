@@ -44,6 +44,7 @@ def choose_difficulty():
     else:
         print("Incorrect input")
 
+# Main function to choose difficulty and replay game
 def main():
     while True:
         choose_difficulty()
