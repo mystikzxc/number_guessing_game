@@ -1,7 +1,7 @@
 import random
 
 # Function to loop until random number is guessed
-def start_guess(guess_limit):
+def play_game(guess_limit):
 
     # Range for random number
     low_num = 1
@@ -38,8 +38,8 @@ print("__Difficulty__\n(1) Easy (10 attempts)\n(2) Hard (5 attempts)\n")
 difficulty = input("Choose difficulty: ")
 
 if difficulty == "1":
-    start_guess(10)
+    play_game(10)
 elif difficulty == "2":
-    start_guess(5)
+    play_game(5)
 else:
     print("Incorrect input")
