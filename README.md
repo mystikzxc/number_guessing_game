@@ -9,5 +9,12 @@ A simple Python number guessing game with difficulty modes.
 - Replay option
 
 ## How to run
+1. Clone the repository:
 ```bash
 git clone https://github.com/mystikzxc/number_guessing_game.git
+```
+
+2. Run the program:
+```bash
+python number_guessing.py
+```
