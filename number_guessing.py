@@ -15,16 +15,23 @@ def play_game(guess_limit):
     out_of_guesses = False
 
     while guess != random_number and not(out_of_guesses):
-        guess = int(input(f"Enter Guess ({LOW_NUM}-{HIGH_NUM}): "))
-        attempts += 1
 
-        if attempts < guess_limit:
-            if guess > random_number:
-                print("Too high")
-            elif guess < random_number:
-                print("Too low")
-        else:
-            out_of_guesses = True
+            # Input for guess and try to catch an error if guess is a string
+            try:
+                guess = int(input(f"Enter Guess ({LOW_NUM}-{HIGH_NUM}): "))
+            except ValueError:
+                print(f"Please enter a number ({LOW_NUM}-{HIGH_NUM})")
+                continue
+
+            attempts += 1
+
+            if attempts < guess_limit:
+                if guess > random_number:
+                    print("Too high")
+                elif guess < random_number:
+                    print("Too low")
+            else:
+                out_of_guesses = True
             
     if out_of_guesses:
         print("You ran out of guesses")
@@ -49,7 +56,7 @@ def main():
     while True:
         choose_difficulty()
 
-        replay = input("Would you like to play again? (y/n)")
+        replay = input("Would you like to play again? (y/n): ").lower()
         if replay != "y":
             print("Thanks for playing!")
             break
